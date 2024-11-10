@@ -7,19 +7,29 @@ public class Auto {
     String marca;
     Motor motor; 
     int registro; 
-    static String cantidadCreados;
+    static int cantidadCreados;
     
     int cantidadAsientos (){
-        return asientos.length;
-
-    }
-    void verificarIntegridad(Asiento asiento, Motor motor){
-        if (this.registro==asiento.registro && asiento.registro==motor.registro){
-            System.out.println("Auto original");
-        }else{
-            System.out.println("“Las piezas no son originales");
-        }
+        int contador=0;
+        for (Asiento i:asientos){
+            if(i instanceof Asiento){
+                contador++;
+            }
+        } return contador;
     }
 
-    
-}
+
+    String verificarIntegridad(){
+        for(Asiento i:asientos){
+            if(i instanceof Asiento){
+                if(i.registro!=motor.registro || i.registro!=registro || registro!=motor.registro){
+                  return"Las piezas no son originales";
+                }
+                } 
+            }    
+        return"Auto original";
+    }
+
+
+    }
+
